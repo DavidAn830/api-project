@@ -24,6 +24,7 @@ const SignUp = () => {
   };
   return (
     <form className="sign-up-container" onSubmit={handleSubmit}>
+      <h1>Sign Up</h1>
       <TextField
         className="sign-up-input"
         required

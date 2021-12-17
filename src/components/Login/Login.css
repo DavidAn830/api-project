@@ -11,3 +11,7 @@
 .login-btn {
   margin: 15px !important;
 }
+
+.lock svg {
+  font-size: 5px;
+}
