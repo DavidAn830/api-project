@@ -1,0 +1,13 @@
+.sign-up-container {
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  justify-content: center;
+  height: 600px;
+  width: 300px;
+}
+
+.sign-up-input,
+.sign-up-btn {
+  margin: 15px !important;
+}
