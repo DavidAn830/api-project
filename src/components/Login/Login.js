@@ -1,4 +1,9 @@
-import { TextField, Button } from "@material-ui/core";
+import {
+  TextField,
+  Button,
+  FormControlLabel,
+  Checkbox,
+} from "@material-ui/core";
 import axios from "axios";
 import "./Login.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,7 +12,8 @@ const baseURL = "http://localhost:4000";
 const loginPath = "api/user/login";
 
 const Login = () => {
-  const status = useSelector((state) => state);
+  const { status, userId, token, username } = useSelector((state) => state);
+  // const status = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -20,11 +26,18 @@ const Login = () => {
         password: password,
       })
       .then((res) => {
-        console.log(res.data);
-        dispatch({ type: "CHANGE_STATUS_LOGGEDIN" });
+        console.log(res.data.data.userId);
+        dispatch({
+          type: "CHANGE_STATUS_LOGGEDIN",
+          userId: res.data.data.userId,
+          token: res.data.data.token,
+          username: username,
+        });
         return res.data;
       })
-      .catch((error) => alert("wrong user information (unauthorized)"));
+      .catch((error) =>
+        alert("user information does not match (unauthorized)")
+      );
   };
   return (
     <form className="login-container" onSubmit={handleSubmit}>
@@ -34,7 +47,7 @@ const Login = () => {
           focusable="false"
           data-prefix="fas"
           data-icon="lock"
-          class="svg-inline--fa fa-lock fa-w-14"
+          className="svg-inline--fa fa-lock fa-w-14"
           role="img"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 448 512"
@@ -62,6 +75,11 @@ const Login = () => {
         name="password"
         variant="outlined"
         type="password"
+      />
+      <FormControlLabel
+        className="remember-me"
+        control={<Checkbox color="primary" aria-label="Checkbox demo" />}
+        label="Remember Me"
       />
       <Button
         className="login-btn"

@@ -12,6 +12,10 @@
   margin: 15px !important;
 }
 
-.lock svg {
-  font-size: 5px;
+.fa-lock {
+  height: 50px !important;
+}
+
+.remember-me {
+  margin-left: 5px !important;
 }

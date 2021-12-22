@@ -1,5 +1,7 @@
+import EventTable from "./Table/Table";
+
 const EventListPage = () => {
-  return <h1>Hi, you are logged in</h1>;
+  return <EventTable />;
 };
 
 export default EventListPage;

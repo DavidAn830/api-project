@@ -9,14 +9,26 @@ import { createStore } from "redux";
 
 const CHANGE_STATUS_TRUE = "CHANGE_STATUS_LOGGEDIN";
 const CHANGE_STATUS_FALSE = "CHANGE_STATUS_LOGGEDOUT";
-let status = false;
+const LOGIN = "USER_LOGGEDIN";
 
-function reducer(state = status, action) {
+let status = false;
+let userId;
+let token;
+let username;
+
+const initialState = { status, userId, token, username };
+
+function reducer(state = initialState, action) {
   switch (action.type) {
     case CHANGE_STATUS_TRUE:
-      return { status: true };
+      return {
+        userId: action.userId,
+        token: action.token,
+        status: true,
+        username: action.username,
+      };
     case CHANGE_STATUS_FALSE:
-      return { status: false };
+      return { userId: "", token: "", status: false, username: "" };
     default:
       return state;
   }
