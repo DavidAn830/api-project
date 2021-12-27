@@ -8,13 +8,15 @@ import {
   Button,
   Menu,
   MenuItem,
+  TableBody,
+  TextField,
 } from "@material-ui/core";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./Table.css";
 
 const EventTable = () => {
-  const [isEdit, setIsEdit] = useState(false);
+  const [isAdd, setIsAdd] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -71,7 +73,14 @@ const EventTable = () => {
         </div>
       </div>
       <div className="table">
-        <Button className="add-btn" variant="contained" color="primary">
+        <Button
+          className="add-btn"
+          variant="contained"
+          color="primary"
+          onClick={() => {
+            setIsAdd(true);
+          }}
+        >
           Add
         </Button>
         <TableContainer className="event-table" component={Paper}>
@@ -82,11 +91,19 @@ const EventTable = () => {
                 <TableCell>To</TableCell>
                 <TableCell>Content</TableCell>
                 <TableCell>Status</TableCell>
-                <TableCell>Completed</TableCell>
                 <TableCell>Action</TableCell>
               </TableRow>
             </TableHead>
             {/* isEdit ?  not edittable content : editable content*/}
+            {isAdd ? (
+              <TableBody>
+                <TableRow>
+                  <TableCell>
+                    <TextField>??</TextField>
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            ) : null}
           </Table>
         </TableContainer>
       </div>

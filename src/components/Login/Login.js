@@ -26,7 +26,6 @@ const Login = () => {
         password: password,
       })
       .then((res) => {
-        console.log(res.data.data.userId);
         dispatch({
           type: "CHANGE_STATUS_LOGGEDIN",
           userId: res.data.data.userId,

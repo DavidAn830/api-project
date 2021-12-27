@@ -1,8 +1,6 @@
 import {
   Button,
   TextField,
-  FormControlLabel,
-  Checkbox,
 } from "@material-ui/core";
 import axios from "axios";
 import "./SignUp.css";
@@ -24,7 +22,10 @@ const SignUp = () => {
           password: password,
           isAdmin: false,
         })
-        .then((res) => console.log(res.data));
+        .then((res) => console.log(res.data))
+        .catch((error) => {
+          alert(error);
+        });
     }
   };
   return (
@@ -70,11 +71,6 @@ const SignUp = () => {
         variant="outlined"
         name="repassword"
         type="password"
-      />
-      <FormControlLabel
-        className="remember-me"
-        control={<Checkbox color="primary" aria-label="Checkbox demo" />}
-        label="Remember Me"
       />
       <Button
         className="sign-up-btn"
