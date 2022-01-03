@@ -13,7 +13,7 @@ const baseURL = "http://localhost:4000";
 const loginPath = "api/user/login";
 
 const Login = () => {
-  const { status, userId, token, username } = useSelector((state) => state);
+  // const { status, userId, token, username } = useSelector((state) => state);
   // const status = useSelector((state) => state);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -34,10 +34,9 @@ const Login = () => {
           token: res.data.data.token,
           username: username,
         });
-        navigate("events");
         localStorage.setItem("token", res.data.data.token);
         localStorage.setItem("username", username);
-        return res.data;
+        navigate("/events");
       })
       .catch((error) =>
         alert("user information does not match (unauthorized)")
