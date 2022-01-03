@@ -6,13 +6,10 @@ import { Provider, useSelector } from "react-redux";
 import { useForceUpdate } from "./components/Hooks/useForceUpdate";
 
 function App() {
-  const { status, userId, token } = useSelector((state) => state);
+  const { status } = useSelector((state) => state);
+  console.log(status);
   useForceUpdate();
-  return (
-    <div className="App">
-      {status ? <EventListPage /> : <MainPage />}
-    </div>
-  );
+  return <div className="App">{status ? <EventListPage /> : <MainPage />}</div>;
 }
 
 export default App;

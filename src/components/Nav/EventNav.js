@@ -1,18 +1,22 @@
 import { useState } from "react";
 import { Menu, MenuItem } from "@material-ui/core";
 import "./EventNav.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const EventNav = () => {
   // const { username } = useSelector((state) => state);
   const username = localStorage.getItem("username");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const logout = () => {
     dispatch({
       type: "CHANGE_STATUS_LOGGEDOUT",
     });
+    localStorage.clear();
+    navigate("/login");
   };
 
   const handleClick = (event) => {
