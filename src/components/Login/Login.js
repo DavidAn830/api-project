@@ -7,6 +7,7 @@ import {
 import axios from "axios";
 import "./Login.css";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const baseURL = "http://localhost:4000";
 const loginPath = "api/user/login";
@@ -15,6 +16,7 @@ const Login = () => {
   const { status, userId, token, username } = useSelector((state) => state);
   // const status = useSelector((state) => state);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,6 +34,9 @@ const Login = () => {
           token: res.data.data.token,
           username: username,
         });
+        navigate("events");
+        localStorage.setItem("token", res.data.data.token);
+        localStorage.setItem("username", username);
         return res.data;
       })
       .catch((error) =>

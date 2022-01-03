@@ -1,0 +1,12 @@
+.event-container {
+  margin: 20px 400px;
+  text-align: left;
+}
+
+.header-btn {
+  border-bottom: 1px solid lightgray;
+}
+
+.add-btn-padding {
+  padding: 10px;
+}

@@ -1,7 +1,13 @@
-import EventTable from "./Table/Table";
+import EventNav from "./Nav/EventNav";
+import Event from "./Table/Event";
 
 const EventListPage = () => {
-  return <EventTable />;
+  return (
+    <>
+      <EventNav />
+      <Event />
+    </>
+  );
 };
 
 export default EventListPage;
